@@ -34,6 +34,7 @@ function displayToDoItem(item) {
     var itemDate = document.createElement("p");
     itemDate.innerText = item.dueDate.toString();
     var itemDiv = document.createElement("div");
+    itemDiv.onclick = markAsComplete;
     itemDiv.classList.add("todo");
     if (item.isCompleted) {
         itemDiv.classList.add("completed");
@@ -48,6 +49,13 @@ function displayToDoItem(item) {
         var incompletedToDos = document.getElementById("incomplete-items");
         incompletedToDos.appendChild(itemDiv);
     }
+}
+function markAsComplete() {
+    var itemDiv = this;
+    itemDiv.classList.add("completed");
+    var completedItems = document.getElementById("complete-items");
+    console.log(completedItems);
+    completedItems.appendChild(itemDiv);
 }
 function getInput(id) {
     return document.getElementById(id);
