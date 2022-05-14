@@ -37,6 +37,16 @@ function displayToDoItem(item) {
     if (item.isCompleted) {
         itemDiv.classList.add("completed");
     }
+    itemDiv.appendChild(itemText);
+    itemDiv.appendChild(itemDate);
+    if (item.isCompleted) {
+        var completedToDos = document.getElementById("complete-items");
+        completedToDos.appendChild(itemDiv);
+    }
+    else {
+        var incompletedToDos = document.getElementById("incomplete-items");
+        incompletedToDos.appendChild(itemDiv);
+    }
 }
 function getInput(id) {
     return document.getElementById(id);

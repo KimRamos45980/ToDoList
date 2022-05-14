@@ -67,6 +67,18 @@ function displayToDoItem(item:ToDoItem):void {
     if(item.isCompleted){
         itemDiv.classList.add("completed");
     }
+
+    itemDiv.appendChild(itemText);
+    itemDiv.appendChild(itemDate);
+
+    if(item.isCompleted){
+        let completedToDos = document.getElementById("complete-items");
+        completedToDos.appendChild(itemDiv);
+    }
+    else{
+        let incompletedToDos = document.getElementById("incomplete-items");
+        incompletedToDos.appendChild(itemDiv);
+    }
 }
 
 // Task: Allow a user to mark a ToDoItem as completed
