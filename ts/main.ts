@@ -35,6 +35,22 @@ function main() {
  * Check form data is valid
  */
 function isValid():boolean{
+    clearErrorSpans();
+
+    let titleInput = getInput("title").value;
+    if(titleInput == ""){
+        let titleMissing = <HTMLSpanElement>getInput("title").nextElementSibling;
+        titleMissing.innerText = "Please enter a title";
+        return false;
+    }
+
+    let dateInput = Date.parse(getInput("due-date").value);
+    if(isNaN(dateInput)){
+        let dateMissing = <HTMLSpanElement>getInput("due-date").nextElementSibling;
+        dateMissing.innerText = "Please enter a valid date";
+        return false;
+    }
+
     return true;
 }
 
@@ -92,6 +108,14 @@ function markAsComplete() {
     let completedItems = document.getElementById("complete-items");
     console.log(completedItems);
     completedItems.appendChild(itemDiv);
+}
+
+function clearErrorSpans():void {
+    let titleSpan = <HTMLSpanElement>getInput("title").nextElementSibling;
+    titleSpan.innerText = "*";
+
+    let dateSpan = <HTMLSpanElement>getInput("due-date").nextElementSibling;
+    dateSpan.innerText = "*";
 }
 
 // Task: store ToDoItem in web storage

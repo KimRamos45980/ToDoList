@@ -19,6 +19,19 @@ function main() {
     }
 }
 function isValid() {
+    clearErrorSpans();
+    var titleInput = getInput("title").value;
+    if (titleInput == "") {
+        var titleMissing = getInput("title").nextElementSibling;
+        titleMissing.innerText = "Please enter a title";
+        return false;
+    }
+    var dateInput = Date.parse(getInput("due-date").value);
+    if (isNaN(dateInput)) {
+        var dateMissing = getInput("due-date").nextElementSibling;
+        dateMissing.innerText = "Please enter a valid date";
+        return false;
+    }
     return true;
 }
 function getToDoItem() {
@@ -56,6 +69,12 @@ function markAsComplete() {
     var completedItems = document.getElementById("complete-items");
     console.log(completedItems);
     completedItems.appendChild(itemDiv);
+}
+function clearErrorSpans() {
+    var titleSpan = getInput("title").nextElementSibling;
+    titleSpan.innerText = "*";
+    var dateSpan = getInput("due-date").nextElementSibling;
+    dateSpan.innerText = "*";
 }
 function getInput(id) {
     return document.getElementById(id);
