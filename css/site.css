@@ -1,3 +1,8 @@
+body {
+    text-align: center;
+    background-color: antiquewhite;
+}
+
 .todo {
     width: 20%;
     box-sizing: border-box;
@@ -6,6 +11,7 @@
     border-radius: .75em;
     margin: 1em;
     cursor: pointer;
+    display: inline-block;
 }
 
 .todo h3 {
@@ -21,6 +27,7 @@
     background-color: lightgreen;
 }
 
+/*
 #complete-items {
     border: solid .1em;
 }
@@ -28,4 +35,20 @@
 #incomplete-items {
     border: solid .1em;
     margin-bottom: 1em;
+}
+*/
+
+input[type="text"], input[type="button"], input[type="checkbox"] {
+    margin-bottom: .5em;
+}
+
+.lists {
+    width: 45%;
+    display: inline-block;
+}
+
+.list-title {
+    width: 45%;
+    display: inline-block;
+    text-decoration: underline;
 }
